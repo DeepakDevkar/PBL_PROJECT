@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scrolling Section</title>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Make the scrolling section horizontally scrollable */
+    .scrolling-container-wrapper {
+      display: flex;
+      width: 100%;
+      overflow: hidden; /* Hide the overflow */
+    }
+
+    .scrolling-container {
+      display: flex;
+      gap: 16px; /* Space between items */
+      animation: scrollAnimation 20s linear infinite; /* Scroll at a constant speed */
+    }
+
+    /* Styling for the individual items */
+    .scrolling-container > div {
+      flex: 0 0 auto; /* Prevent items from shrinking */
+      width: 50vw; /* Set the width to 50% of the viewport width */
+      height: 517px; /* Set the height to 517px */
+      position: relative;
+      background-color: #cce7ff;
+      padding: 16px;
+      border-radius: 10px;
+    }
+
+    /* Add the scroll animation effect */
+    @keyframes scrollAnimation {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%); /* Scroll all the way to the left (one item width) */
+      }
+    }
+
+    /* Style for the image background */
+    .scrolling-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%; /* Take full width of the container (50% of the screen) */
+      height: 100%; /* Take full height of the container */
+      object-fit: cover;
+      border-radius: 10px;
+      opacity: 0.5;
+    }
+
+    /* Style for text content */
+    .scrolling-container .content {
+      position: relative;
+      z-index: 10;
+      color: white;
+    }
+
+    .scrolling-container h1 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .scrolling-container h2 {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    .scrolling-container button {
+      background-color: #e60000;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .scrolling-container .limited-supply {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background-color: #e60000;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<main class="p-4">
+  <section class="scrolling-container-wrapper">
+    <!-- Duplicate the section to create an infinite scroll effect -->
+    <div class="scrolling-container">
+      <!-- Wine Images -->
+      <div class="image-item wine">
+        <img alt="Wine bottles and glass" src="https://storage.googleapis.com/a1aa/image/RwOY2_x2JqjZERqLvTRJ4XZUbx7KaYFIHPyOS09Rt_g.jpg"/>
+        <div class="content">
+          <h2>It's Wine O'Clock!</h2>
+          <h1>Great Deals on <br/> Selected Wines</h1>
+          <p>I'm a paragraph. Click here to add your own text and edit me. Let your users get to know you.</p>
+          <button>Shop Now</button>
+        </div>
+        <div class="limited-supply">Limited Supply</div>
+      </div>
+      <!-- Grocery Images (Hidden initially) -->
+      <div class="image-item grocery" style="display:none;">
+        <img alt="Grocery items" src="https://images.pexels.com/photos/842711/pexels-photo-842711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
+        <div class="content">
+          <h2>Fresh Groceries</h2>
+          <h1>Discounts on Your Favorite Items</h1>
+          <p>Find the best deals on groceries.</p>
+          <button>Shop Now</button>
+        </div>
+        <div class="limited-supply">Limited Supply</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  // Switch images after every 10 seconds
+  let wineImages = document.querySelectorAll('.wine');
+  let groceryImages = document.querySelectorAll('.grocery');
+  
+  let currentImageIndex = 0;
+  let switchTime = 10000; // Time to switch images (10 seconds)
+
+  function switchImages() {
+    // Hide current images
+    wineImages.forEach(image => image.style.display = 'none');
+    groceryImages.forEach(image => image.style.display = 'none');
+
+    // Toggle between wine and grocery images
+    if (currentImageIndex === 0) {
+      wineImages.forEach(image => image.style.display = 'block');
+      currentImageIndex = 1;
+    } else {
+      groceryImages.forEach(image => image.style.display = 'block');
+      currentImageIndex = 0;
+    }
+  }
+
+  // Initially show wine images
+  switchImages();
+
+  // Set interval to switch images every 10 seconds
+  setInterval(switchImages, switchTime);
+</script>
+
+</body>
+</html>
