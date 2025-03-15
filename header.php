@@ -26,9 +26,13 @@
                 <div class="container-fluid">
                     <div class="contact_nav">
                         <a href="">
+
+
+                        
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             <span>
-                                Call : +01 123455678990
+                                Call : +01 9763526348
+                                
                             </span>
                         </a>
                         <a href="">
@@ -61,9 +65,11 @@
                                     <a class="nav-link" href="index.html">Home <span
                                             class="sr-only">(current)</span></a>
                                 </li>
+                                
                                 <li class="nav-item">
                                     <a class="nav-link" href="about.html"> About</a>
                                 </li>
+                                
                                 <li class="nav-item">
                                     <a class="nav-link" href="service.html">Services</a>
                                 </li>
